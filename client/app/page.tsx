@@ -2,7 +2,7 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import {DateTime} from 'luxon';
+import { DateTime } from 'luxon';
 import RandomIcon from './icon';
 
 export default function Home() {
