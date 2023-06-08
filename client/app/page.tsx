@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
+import RandomIcon from './icon';
 
 export default function Home() {
   const colors = ['#DF80AC', '#579FF4', '#FCB325', '#098E27'];
@@ -37,7 +38,9 @@ export default function Home() {
             <img className="star3" src="/images/star.svg" alt="Star" />
           </div>
         </div>
-        <div className="text"></div>
+        <div className="text">
+          <RandomIcon color={randomColor} />
+        </div>
       </main>
     </>
   )
