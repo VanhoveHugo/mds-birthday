@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import {DateTime} from 'luxon';
+import { DateTime } from 'luxon';
 
 export default function Home() {
   const colors = ['#DF80AC', '#579FF4', '#FCB325', '#098E27'];
@@ -12,22 +12,30 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-        setDate(DateTime.now());
+      setDate(DateTime.now());
     }, 60000);
     return function cleanup() {
-        clearInterval(timer);
+      clearInterval(timer);
     }
   }
-);
+  );
 
   return (
     <>
-      <header>  
+      <header>
         <h1>Citation et anniversaires</h1>
-        <p>{date.setLocale('fr').toFormat("cccc LL LLLL y T"  )}</p>
+        <p>{date.setLocale('fr').toFormat("cccc LL LLLL y T")}</p>
       </header>
       <main style={{ backgroundColor: randomColor }}>
         <div className="name">
+          <div className="birth-picture">
+            <img src="/images/circle.svg" alt="Image Description" />
+          </div>
+          <div className="stars-container">
+            <img className="star" src="/images/star.svg" alt="Star" />
+            <img className="star2" src="/images/star.svg" alt="Star" />
+            <img className="star3" src="/images/star.svg" alt="Star" />
+          </div>
         </div>
         <div className="text"></div>
       </main>

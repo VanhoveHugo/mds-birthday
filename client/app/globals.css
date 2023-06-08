@@ -60,9 +60,93 @@ main {
   flex: 1;
   border-bottom: 2px solid #333;
   z-index: 10;
+  position: relative;
 }
 
 .text {
   background: #fff;
   flex: 1;
 }
+
+#currentDate {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.birth-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.birth-picture img {
+  width: 100%;
+  animation: spin 15s infinite linear; 
+}
+
+.birth-picture::before {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  box-shadow: -10px 14px 0 #000;
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.star, .star2, .star3 {
+  position: absolute;
+  animation: moveStar 4s infinite ease-in-out;
+  width: 50px;
+  height: 50px;
+  z-index: 0;
+}
+
+.star {
+  top: 5%;
+  left: 10%;
+  animation-delay: 1s;
+}
+
+.star2 {
+  top: 25%;
+  right: 5%;
+  animation-delay: 2s;
+}
+
+.star3 {
+  top: 60%;
+  left: 15%;
+  animation-delay: 3s;
+}
+
+@keyframes moveStar {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(100%);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+
