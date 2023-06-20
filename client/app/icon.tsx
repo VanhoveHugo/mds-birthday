@@ -16,11 +16,6 @@ export default function RandomIcon({color}: {color: string}) {
 
   const image = getRandomImage(); 
   
-  const style = {
-    '::before': {
-      background: color,
-    },
-  };
   return (
     <div id="icon">
       <div className="image-container card">

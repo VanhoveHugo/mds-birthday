@@ -29,7 +29,7 @@ body {
 }
 
 header {
-  height: 100px;
+  min-height: 100px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -53,6 +53,7 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: all 0.5s ease-in-out;
 }
 
 .name {
@@ -60,6 +61,10 @@ main {
   border-bottom: 2px solid #333;
   z-index: 10;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .text {
@@ -78,6 +83,7 @@ main {
   height: 100%;
   border: 2px solid #333;
   z-index: -1;
+  transition: all 0.5s ease-in-out;
 }
 
 .card img {
@@ -97,19 +103,33 @@ main {
   width: 80%;
   max-width: 673.15px;
   margin: auto;
-  margin-top: 100px ;
+  margin-top: 4rem;
 }
+
 
 .birth-picture {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 60%;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+  position: relative;
+}
+
+#quote .card{
+  padding: 3rem;
+}
+
+.name .list div {
+  display: none;
+}
+.name .list .active {
+  display: flex;
+}
+
+.name p { 
+  font-size: 6vw;
+  text-align: center;
+  color: #000;
 }
 
 .birth-picture img {
@@ -205,4 +225,55 @@ main {
   max-width: 673.15px;
   margin: auto;
   margin-top: 100px ;
+}
+
+.progress-bar {
+  width: 50%;
+  height: 13px;
+  margin-top: 40px;
+  border: 1px solid #000000;
+  background-color: #f2f2f2;
+  border-radius: 6.5px;
+  margin: auto;
+  position: relative;
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes load {
+  0% { 
+    width: 0%;
+  }
+  100% { 
+    width: 100%;
+  }
+}
+
+.progress {
+  height: 100%;
+  border-radius: 5px;
+  animation: load 60000ms linear infinite;
+  transition: all 0.5s ease-in-out;
+}
+
+.progress-bar-background {
+  position: absolute;
+  z-index: -1;
+  height: 13px;
+  width: 100%;
+  top: 6px;
+  left: -3px;
+  background-color: #000000;
+  border-radius: 6.5px;
+}
+
+.prev {
+  position: absolute;
+  left: -10px;
+  transform: translateX(-100%);
+}
+.next {
+  position: absolute;
+  right: -20px;
 }
