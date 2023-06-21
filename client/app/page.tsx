@@ -1,21 +1,27 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import { DateTime } from 'luxon';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import RandomIcon from './icon';
 import RandomQuote from './quote';
+import { DateTime } from 'luxon';
+import { log } from 'console';
 
 export default function Home() {
   const colors = ['#DF80AC', '#579FF4', '#FCB325', '#098E27'];
   let randomColor = colors[Math.floor(Math.random() * colors.length)];
+  const [date, setDate] = useState(null);
+  const [data, setData] = useState([]);
 
-  const [date, setDate] = useState(DateTime.now().setLocale('fr').toFormat("cccc LL LLLL y T"));
+  useLayoutEffect(() => {
+    async function fetchData() {
+      const res = await fetch('http://localhost:3000/api');
+      const json = await res.json();
+      setData(json);
+      setDate(DateTime.now().setLocale('fr').toFormat("cccc LL LLLL y T"));
+    }
+    fetchData();
+  }, []);
 
-  const [data, setData] = useState([ 
-    { name: 'Jean' },
-    { name: 'Pierre' } 
-  ]);
-  
   let [iterator, setIterator] = useState(0);
 
   useEffect(() => {
@@ -62,7 +68,7 @@ export default function Home() {
           <div className="progress-bar">
             <p className='prev'>{iterator + 1}</p>
             <div className="progress-bar-background"></div>
-            <div className="progress" style={{ backgroundColor: randomColor }}></div>
+            <div className="progress " style={{ backgroundColor: randomColor}}></div>
             <p className='next'>
               {iterator + 2 > data.length ? 1 : iterator + 2}
             </p>
@@ -72,3 +78,12 @@ export default function Home() {
     </>
   )
 }
+
+Home.getInitialProps = async () => {
+  // Effectue ta requête de récupération de données
+  const res = await fetch('http://localhost:3000/api');
+  const data = await res.json();
+
+  // Retourne les données comme propriété du composant
+  return { data };
+};

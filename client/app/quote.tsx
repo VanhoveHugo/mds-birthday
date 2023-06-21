@@ -26,8 +26,7 @@ export default function RandomQuote({color}: {color: string}) {
     return quotes[randomIndex];
   };
 
-  const [quote, setQuote] = React.useState(getRandomQuote());
-
+  const [quote, setQuote] = React.useState(quotes[0]);
 
   return (
     <div id="quote">

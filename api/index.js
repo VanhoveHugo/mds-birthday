@@ -22,4 +22,4 @@ app.use(express.json());
 
 app.use('/api', require('./routes'));
 
-app.listen(process.env.SERVER_PORT);
+app.listen(3000)

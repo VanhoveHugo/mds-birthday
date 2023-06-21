@@ -5,11 +5,7 @@ export const metadata = {
   description: 'SEO c\'est de l\'eau !',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children, }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body>{children}</body>
